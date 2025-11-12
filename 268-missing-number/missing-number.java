@@ -1,5 +1,6 @@
 class Solution {
     public int missingNumber(int[] nums) {
+        //Sumit Goswami
         int n = nums.length;
         int sum = 0;
         int actualSum = 0;
