@@ -1,5 +1,6 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
+        // Sumit Goswami
         int first = Arrays.binarySearch(nums, target);
         if (first < 0) return new int[]{-1, -1}; 
 
