@@ -1,5 +1,6 @@
 class Solution {
     public int[] plusOne(int[] digits) {
+        // Sumit Goswami
 
         int rev = 0;
         int n = digits.length;
