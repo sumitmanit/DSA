@@ -1,36 +1,28 @@
+import java.util.HashSet;
+
 class Solution {
-    // Sumit goswami
     public boolean wordPattern(String pattern, String s) {
 
         String[] words = s.split(" ");
-
-        if (pattern.length() != words.length) {
-            return false;
-        }
-
-        HashMap<Character, String> map = new HashMap<>();
-        HashSet<String> set = new HashSet<>();
+        if (pattern.length() != words.length) return false;
 
         for (int i = 0; i < pattern.length(); i++) {
 
-            char ch = pattern.charAt(i);
-            String word = words[i];
+            for (int j = 0; j < i; j++) {
 
-            if (map.containsKey(ch)) {
-                
-                if (!map.get(ch).equals(word)) {
-                    return false;
+                if (pattern.charAt(i) == pattern.charAt(j)) {
+                    if (!words[i].equals(words[j])) {
+                        return false;
+                    }
                 }
-            } else {
-                
-                if (set.contains(word)) {
-                    return false;
+
+                if (words[i].equals(words[j])) {
+                    if (pattern.charAt(i) != pattern.charAt(j)) {
+                        return false;
+                    }
                 }
-                map.put(ch, word);
-                set.add(word);
             }
         }
-
         return true;
     }
 }
