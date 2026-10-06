@@ -1,47 +1,55 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-      
+        // SUMIT GOSWAMI
 
-      // Smit Goswami
-        List<List<Integer>> twoD = new ArrayList<>();
-    Arrays.sort(nums);
+        List<List<Integer>> twoArray = new ArrayList<>();
 
+        Arrays.sort(nums);
 
-    for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
 
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
 
-        if (i > 0 && nums[i] == nums[i - 1]) continue;
+           
 
+            int l = i + 1;
+            int r = nums.length - 1;
 
-        int l = i+1;
-        int r = nums.length-1;
-        while (l<r) {
-           int sum = nums[i] + nums[l] + nums[r];
+            while (l < r) {
 
-        if (sum == 0) {
-             ArrayList<Integer> arr = new ArrayList<>();
+                int sum = nums[i] + nums[l] + nums[r];
 
-            arr.add(nums[i]);
-            arr.add(nums[l]);
-            arr.add(nums[r]);
+                if (sum == 0) {
 
-            twoD.add(arr);
-            
-            l++;
-            r--;
+                    ArrayList<Integer> arr = new ArrayList<>();
 
-            while (l < r && nums[l] == nums[l - 1]) l++;
-             while (l < r && nums[r] == nums[r + 1]) r--;
+                    arr.add(nums[i]);
+                    arr.add(nums[l]);
+                    arr.add(nums[r]);
 
+                    twoArray.add(arr);
 
-        } else if (sum < 0) {
-            l++;
-        } else {
-            r--;
+                    l++;
+                    r--;
+
+                    while (l < r && nums[l] == nums[l - 1]) {
+                        l++;
+                    }
+
+                    while (l < r && nums[r] == nums[r + 1]) {
+                        r--;
+                    }
+
+                } else if (sum < 0) {
+                    l++;
+                } else {
+                    r--;
+                }
+            }
         }
-        }
 
-    }
-  return twoD;
+        return twoArray;
     }
 }
